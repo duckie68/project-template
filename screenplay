@@ -2,7 +2,7 @@
 
 # Takes argument and assigns to variables
 # directory variable changes spaces to underscores
-name="$1"
+name=`echo $1 | tr [a-z] [A-Z]`
 directory=`echo $1 | tr ' ' '_' `
 
 # Check to see if anything exists already
