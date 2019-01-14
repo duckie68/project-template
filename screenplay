@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Takes argument and assigns to variables
+# directory variable changes spaces to underscores
+name="$1"
+directory=`echo $1 | tr ' ' '_' `
+
+# Check to see if anything exists already
+if [ ! -d "$directory" ]
+then
+        # Create directory structure
+        mkdir `echo $directory`
+        cd $directory
+        mkdir assets
+        # Create script file and a notes file
+        touch notes.md
+        echo "Title:" > ${directory}.fountain
+        echo "        _**$name**_" >> ${directory}.fountain
+        cat ~/.templates/screenplay >> ${directory}.fountain
+        echo "Screenplay project created"
+        echo "Dirctory ${directory}/assets both created"
+        echo "notes.md file created"
+        echo "${directory}.screenplay file created and front end matter populated"
+        echo "Use 'cd ${directory}' to enter directory and begin work"
+else
+        echo "Directory already exists - cancel all actions"
+fi
