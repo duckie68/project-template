@@ -2,26 +2,43 @@
 
 # Takes argument and assigns to variables
 # directory variable changes spaces to underscores
-name=`echo $1 | tr [a-z] [A-Z]`
-directory=`echo $1 | tr ' ' '_' `
+name=`echo $* | tr [a-z] [A-Z]`
+directory=`echo $* | tr ' ' '_' `
+date=$(date +%d-%B-%Y)
 
 # Check to see if anything exists already
 if [ ! -d "$directory" ]
 then
-        # Create directory structure
-        mkdir `echo $directory`
-        cd $directory
-        mkdir assets
-        # Create script file and a notes file
-        touch notes.md
-        echo "Title:" > ${directory}.fountain
-        echo "        _**$name**_" >> ${directory}.fountain
-        cat ~/.templates/screenplay >> ${directory}.fountain
-        echo "Screenplay project created"
-        echo "Dirctory ${directory}/assets both created"
-        echo "notes.md file created"
-        echo "${directory}.screenplay file created and front end matter populated"
-        echo "Use 'cd ${directory}' to enter directory and begin work"
+	# Create directory structure
+	mkdir `echo $directory`
+	cd $directory
+	mkdir assets
+	# Create script file and a notes file
+	touch notes.md
+	touch ${directory}.fountain
+	# Populate script with title and front end matter
+	echo "Title:" > ${directory}.fountain
+	echo "        _**$name**_" >> ${directory}.fountain
+	echo "Credit: Written by" >> ${directory}.fountain
+	echo "Author: Shiva Rodriguez & D. Duckie Rodriguez" >> ${directory}.fountain
+	echo "Source:" >> ${directory}.fountain
+	echo -n "Draft date: " >> ${directory}.fountain
+	echo "$date" >> ${directory}.fountain
+	echo "Contact:" >> ${directory}.fountain
+	echo "        Siren Productions Media" >> ${directory}.fountain
+	echo "        121 Pine Tree Drive" >> ${directory}.fountain
+	echo "        Ormond Beach, FL 32174" >> ${directory}.fountain
+	echo "        (386)500-1604" >> ${directory}.fountain
+	echo "        shivarodriguez@gmail.com" >> ${directory}.fountain
+	echo "        duckie.68@gmail.com" >> ${directory}.fountain
+	echo "\n" >> ${directory}.fountain
+	echo "FADE IN:" >> ${directory}.fountain
+	echo "\n" >> ${directory}.fountain
+	echo "Screenplay project created"
+	echo "Dirctory ${directory}/assets both created"
+	echo "notes.md file created"
+	echo "${directory}.screenplay file created and front end matter populated"
+	echo "Use 'cd ${directory}' to enter directory and begin work"
 else
-        echo "Directory already exists - cancel all actions"
+	echo "Directory already exists - cancel all actions"
 fi
