@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# SCRIPT:	shellscript
+# AUTHOR:	duckie68 - D. Duckie Rodriguez
+# DATE:		02-February-2019
+# REV:		1.1.A
+#
+# PLATFORM:	Linux
+#
+# PURPOSE:	Create a boilerplate for a shell script.
+#
+# USAGE:	shellscript $1
+#		Pass name of shell script to create and edit boilerplate.
+#
+
+script="$HOME/.scripts/personal/$1"
+date=$(date +%d-%B-%Y)
+
+if [ ! -f "$script" ]
+then
+	touch "$script"
+	echo -e "#!/bin/bash\n#\n# SCRIPT:\t$1" >> $script
+	echo -e "# AUTHOR:\tduckie68 - D. Duckie Rodriguez" >> $script
+	echo -e "#\t\thttps://github.com/duckie68\n" >> $script
+	echo -e "# DATE:\t\t$date" >> $script
+	echo -e "# REV:\t\t1.1.A\n#" >> $script
+	echo -e "# PLATFORM:\tLinux\n#" >> $script
+	echo -e "# PURPOSE:\n#\n# USAGE:\t$1" >> $script
+	nvim $script
+else
+	echo "A shell script of that name already exists."
+fi
