@@ -1,56 +1,31 @@
 # project-template
-This is a script to create a project template for writing screenplays.
+This project began with an article for creative writers, specifically screenplays.  It is meant to be for those who are not technically minded to learn the "script kiddie" approach to use the tools available to them.
 
-The script is very easy to modify for whatever project structure you may need.
+The original form was a long winded and heavily commented bash script.  I chose bash because of my own lack of familiarity.  Still, as I learned more, I couldn't help but fix it up and expand upon it.  Taking a trip through commits may be an excellent, or perhaps funny experience.  That's your call.
 
-Here is how I used it, with very verbose comments.
+Still, if you are new to bash scripting, this may be a great help for you.
 
-## Script execution
-Script is stored in a directory on my path and `chmod +x screenplay` makes it executable.
+## screenplay
+This script started it all.  While the big lesson in my article was how to ask the right questions - skipping the details about writing screenplays, and breaking down problems as simple data manipulation - it was helpful to provide a simple script to demonstrate how many tasks can be easily automated without a CS degree just by looking.
 
-Script is used by calling `screenplay '<name of screenplay>'` in the directory that the project will be created.
+This script creates a boilerplate to begin an organized writing session, creating directories and files that will help the writer get started with the project.
 
-## Assign argument to variables
-The name of the screenplay is assigned to two variables, `name` and `directory`.  `name` is the argument in all caps, and `directory` is the argument with blank spaces replaced by underscores.
+It takes a multi-word argument as a screenplay title.
 
-## Checking
-The conditional checks to see if `directory` exists already.  If it does, the script will end with no actions taken.
-If this step is not included, then the initial files will be rewritten and any previous work will be lost.
+It then creates a folder named after the screenplay with spaces replaced by underscores, and a subfolder called `assets`.  It then creates a file titled `notes.md` and a screenplay file of the screenplay name (with underscores) in the fountain format.
 
-## Creating the project
-The actions are well commented, and can easily be modified, but the end result is to create a screenplay directory, and an assets subdirectory.
+Finally, it populates the front end matter of the fountain file with screenplay name, writer, draft date, and contact information, as well as other supplementary fields that can be filled in by the end user.
 
-In the main directory is a `notes.md` file which is empty, and a .fountain text file with the front end matter automatically populated.
+## shellscript
+This had more to do with wanting to demonstrate that I can write much better code than in `screenplay` than anything else.  Also, it provides a decent front end for my next creation - an all encompassing boilerplate program for any possible project.
 
-The script inserts the first two lines to the .fountain file, a `Title:` key, followed by the title in all caps along with bold and underlined formatting for the fountain markup - this is standard formatting for screenplays.
+This particular script is built around my own personal usage, but the second commit for it will be heavily commented as well.
 
-The script then populates the rest of the front end matter with the rest of the key / value pairs that contain my personal information by reading the file stored in `~/.templates/screenplay`, which is a simple text file written out as regular front end matter.  I have included the text file for reference.
+This script takes a single argument, the shell script name, and creates a boilerplate for a shell script in my `$HOME/.scripts/personal` directory.  The boilerplate is based upon **"Mastering UNIX Shell Scripting"**, but may change.
 
-The rest of the script simply explains what the script has done to the user.
+Upon creation of the file, it calls up **nvim** with the file in the buffer.
 
-The end result is a file structure;
-~~~
--<screenplay_name>/
-| <screenplay_name>.fountain
-| notes.md
-  - /assets/
-~~~
-and the `<screenplay_name>.fountain` file containing
-~~~
-Title:
-        _**<SCREENPLAY NAME>**_
-Credit: Written by
-Author: Shiva Rodriguez & D. Duckie Rodriguez
-Source:
-Draft date:
-Contact:
-        Siren Productions Media
-        121 Birch Tree Drive
-        Ormond Beach, FL 32172
-        (123)456-7890
-        someone@gmail.com
-        someone-else@gmail.com
-~~~
+I did not do anything to set script permissions, so `chmod +x` will be needed to run it still.
 
-## TODO
-Auto populate the date when I get around to it.
+# TODO:
+The next logical step is to take both of these templates, and turn them into functions to be used in an all inclusive shell program that will create whatever template I want.  Again, these programs are used for teaching, and will all be heavily commented, so anyone should be able to easily create templates of their own based around file creation, data population, and directory structure.  Even going so far as opening up an entire development environment to specific standards.
