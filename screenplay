@@ -1,4 +1,22 @@
 #!/bin/bash
+#
+# SCRIPT:	screenplay
+# AUTHOR:	duckie68 - D. Duckie Rodriguez
+# DATE:		02-February-2019
+# REV:		1.1.A
+#
+# PLATFORM:	Linux
+#
+# PURPOSE:	This is a simplistic shell script for the article "A
+#		Programmers Lessons For Creative Writing".  This is a heavily
+#		commented and very inefficient script meant to help non
+#		programmers use and modify ready made tools.  This tool builds
+#		a boilerplate for a screenplay writing project.
+#
+# USAGE:	screenplay $*
+#		Pass name of screenplay.  Used to name directory, screenplay
+#		file, and also place name of screenplay in front end matter.
+#
 
 # Takes argument and assigns to variables
 # directory variable changes spaces to underscores
